@@ -82,6 +82,24 @@ article a:hover {
   color: var(--ifm-link-hover-color);
 }
 
+/*
+ * Ghost/outline button for use on the dark hero (landing page).
+ * White text + white border, tinted on hover. Infima's default
+ * button--outline keeps the variant's text colour (black for
+ * button--secondary), which disappears on the dark gradient.
+ */
+.hero-ghost-btn {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+}
+.hero-ghost-btn:hover,
+.hero-ghost-btn:focus {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
 /* Navbar logo sizing — the launcher icon is square; cap its height. */
 .navbar__logo {
   height: 32px;

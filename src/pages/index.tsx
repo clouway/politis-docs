@@ -54,7 +54,7 @@ function Hero() {
           Започни тук
         </Link>
         <Link
-          className="button button--lg button--secondary button--outline"
+          className="button button--lg button--outline hero-ghost-btn"
           to="/mobile/cash-session"
         >
           Касов отчет (ново)
