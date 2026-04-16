@@ -10,14 +10,14 @@ sidebar_position: 9
 Операциите свързани с покупка на стока в мобилното приложение на Политис са следните: *Получаване, Печат, Завърши*.
 Достъп до фунционалностите свързани с получаване на стока се осъществява като от главното меню се избере *Стоков контрол* и след това *Получаване на стока*.
 
-<split-panel>
-    <panel>
-        <img src="./main-menu-stock-control.bg.png" alt="Стоков контрол" />
-    </panel>
-    <panel>
-        <img src="./stock-control-menu.bg.png" alt="Получаване на стока" />
-    </panel>
-</split-panel>
+
+    
+![Стоков контрол](./main-menu-stock-control.bg.png)
+    
+    
+![Получаване на стока](./stock-control-menu.bg.png)
+    
+
 
 <br></br>
 
@@ -45,14 +45,14 @@ sidebar_position: 9
 
 За избор на партида от вече регистрирани партиди за артикула се натиска бутон *Избери партида*. На дисплея се визуализира диалогов прозорец с всички регистрирани партиди за избрания артикул.
 
-<split-panel>
-    <panel>
-        <img src="./purchase-order-batch-add.bg.png" alt="Добавяне на партида" />
-    </panel>
-    <panel>
-        <img src="./purchase-order-batch-list.bg.png" alt="Списък с партиди" />
-    </panel>
-</split-panel>
+
+    
+![Добавяне на партида](./purchase-order-batch-add.bg.png)
+    
+    
+![Списък с партиди](./purchase-order-batch-list.bg.png)
+    
+
 
 <br></br>
 
@@ -65,14 +65,14 @@ sidebar_position: 9
 
 При необходимост или при липса на валидна партида за артикула може да се регистрира нова партида от екрана с детайли за артикула, където се избира *Нова партида*.
 
-<split-panel>
-    <panel>
-        <img src="./purchase-order-batch-new.bg.png" alt="Нова партида" />
-    </panel>
-    <panel>
-        <img src="./purchase-order-batch-form.bg.png" alt="Форма за нова партида" />
-    </panel>
-</split-panel>
+
+    
+![Нова партида](./purchase-order-batch-new.bg.png)
+    
+    
+![Форма за нова партида](./purchase-order-batch-form.bg.png)
+    
+
 
 <br></br>
 
@@ -90,14 +90,14 @@ sidebar_position: 9
 След добавяне на всички артикули за приемане се натиска бутон *Получи*, при което се визуализира екран със статистика за заявени, получени и чакащи получаване артикули.
 
 
-<split-panel>
-    <panel>
-        <img src="./purchase-order-accept.bg.png" alt="Запази" />
-    </panel>
-    <panel>
-        <img src="./purchase-order-checkout.bg.png" alt="Екран за потвърждение" />
-    </panel>
-</split-panel>
+
+    
+![Запази](./purchase-order-accept.bg.png)
+    
+    
+![Екран за потвърждение](./purchase-order-checkout.bg.png)
+    
+
 
 <br></br>
 
@@ -105,26 +105,26 @@ sidebar_position: 9
 
 От списъка със заявки за покупка може да се проверят детайлите за заявката.
 
-<split-panel>
-    <panel>
-        <img src="./orders-list-details.bg.png" alt="Меню - детайли" />
-    </panel>
-    <panel>
-        <img src="./orders-list-details-screen.bg.png" alt="Екран за детайли" />
-    </panel>
-</split-panel>
+
+    
+![Меню - детайли](./orders-list-details.bg.png)
+    
+    
+![Екран за детайли](./orders-list-details-screen.bg.png)
+    
+
 
 <br></br>
 
 След като получаването на стока е завършено заявката за поръчка трябва да се завърши от бутон *Завърши* от списъка със заявки.
 
-<split-panel>
-    <panel>
-        <img src="./order-complete.bg.png" alt="Меню - завърши" />
-    </panel>
-    <panel>
-        <img src="./order-completed.bg.png" alt="Завършена заявка" />
-    </panel>
-</split-panel>
+
+    
+![Меню - завърши](./order-complete.bg.png)
+    
+    
+![Завършена заявка](./order-completed.bg.png)
+    
+
 
 <br></br>

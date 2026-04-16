@@ -11,14 +11,14 @@ sidebar_position: 2
 Всеки продукт в Политис съдържа информация за име, тип, мерна единица, доставчик. Към продуктите могат да се създават варианти, а самите варианти да се организират в опаковки. Всеки продукт може да бъде зачислен към определена дивизия за по-лесна обработка  и ценообразуване.
 politis/guide/product_management/register-product
 
-<link to="/politis/guide/product_management/register-product" name="Управление на продукти"></link>
+[Управление на продукти](/politis/guide/product_management/register-product)
 <br></br>
 
 ## Складове
 
 Складовете в Политис дава възможност за организиране на местата, от които компанията извършва следните дейности: фактуриране, доставки, складови наличности.
 
-<link to="/politis/guide/settings/company-details/#работни-обекти" name="Работни обекти"></link>
+[Работни обекти](/politis/guide/settings/company-details/#работни-обекти)
 
 <br></br>
 
@@ -35,7 +35,7 @@ politis/guide/product_management/register-product
 - *Заявка за трансфер*
 - *Протокол за липси и излишъци*
 
-<link to="/politis/guide/documents/documents/" name="Създаване и отпечатване на документи"></link>
+[Създаване и отпечатване на документи](/politis/guide/documents/documents/)
 
 <br></br>
 
@@ -43,16 +43,16 @@ politis/guide/product_management/register-product
 
 Политис предлага възможности за стоков контрол при покупка на стоки. Създаване на заявки за покупка, приемането им, както и директно заприхождаване на стока към даден склад спомага за бързо организиране на складови наличности.
 
-<link to="/politis/guide/stock-control/purchase/purchase-orders/purchase-orders" name="Покупка със заявка"></link>
+[Покупка със заявка](/politis/guide/stock-control/purchase/purchase-orders/purchase-orders)
 <br></br>
-<link to="/politis/guide/stock-control/purchase/purchase-direct/purchase-direct" name="Покупка с директно заприхождаване"></link>
+[Покупка с директно заприхождаване](/politis/guide/stock-control/purchase/purchase-direct/purchase-direct)
 <br></br>
 
 ## Трансфер
 
 Трансферите служат за прехвърляне на стоки между складовете на компанията. В Политис може да се създават заявки за трансфер, който да се предават от мобилното приложение или уеб.
 
-<link to="/politis/guide/stock-control/stock-transfers/stock-transfers" name="Трансфер на стока"></link>
+[Трансфер на стока](/politis/guide/stock-control/stock-transfers/stock-transfers)
 <br></br>
 
 ## Продажба
@@ -61,9 +61,9 @@ politis/guide/product_management/register-product
 В уеб продажбите използват модела поръчка-доставка, като е нужно първо да се създаде поръчка към съответния клиент, а след това да се направи доставка. При извършване на доставка автоматично се създават документите *Стокова разписка* и *Фактура*. Поръчките създадени от уеб могат да бъдат доставяни чрез мобилното приложение.
 В мобилното приложение продажбите изполват два модела - директна продажба и поръчка доставка. При директната продажба едновременно се създава поръчка, която се доставя на момента и се издават съответните търговски документ - *стокова разписка* и *фактура*. При поръчка-продажба е необходимо първо да се създаде поръчка към даде клиент, която може да бъде доставена по-късно. Търговките документи се създават по време на доставката.
 
-<link to="/politis/guide/web-sales/web-sales/" name="Регистриране на продажби - уеб"></link>
+[Регистриране на продажби - уеб](/politis/guide/web-sales/web-sales/)
 <br></br>
-<link to="/politis/mobile/sales_guide/sales_guide/" name="Регистриране на продажби - мобилно приложение"></link>
+[Регистриране на продажби - мобилно приложение](/politis/mobile/sales_guide/sales_guide/)
 <br></br>
 
 ## Ценови политики
@@ -74,4 +74,4 @@ politis/guide/product_management/register-product
 *Сравнение на ценови листи* - позволява сравнение между два ценови листа за различни варианти
 *Глобални ценови листи* - позволява добавяне на ценови листи валидни за всички клиенти на компанията
 
-<link to="/politis/guide/pricelist-management/pricelist-management/" name="Управление на ценови политики"></link>
+[Управление на ценови политики](/politis/guide/pricelist-management/pricelist-management/)

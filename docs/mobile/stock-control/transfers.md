@@ -8,14 +8,14 @@ sidebar_position: 9
 
 Политис мобилно приложение позволява трансфериране на стока от и към склада на текущия потребител. За да се направи *Трансфер на стока* от главното меню се избира *Управление на стока* и след това *Трансфер*.
 
-<split-panel>
-    <panel>
-        <img src="main-menu-stock-control.bg.png" alt="Управление на стока" />
-    </panel>
-    <panel>
-        <img src="stock-control-transfer.bg.png" alt="Трансфер" />
-    </panel>
-</split-panel>
+
+    
+![Управление на стока](main-menu-stock-control.bg.png)
+    
+    
+![Трансфер](stock-control-transfer.bg.png)
+    
+
 
 <br></br>
 
@@ -47,14 +47,14 @@ sidebar_position: 9
 4. **4. Поле за търсене на артикул** - поле за ръчно въвеждане на артикули. Артикул може да се търси по следните параметри: *име, код при доставчик*.
 5. **5. Ляво странично меню** - улеснява добавянето на артикули и показва текущата **наличност на склада на потребителя** и наличността, която ще е налична в склада след получаване на трансфера.
 
-<split-panel>
-    <panel>
-        <img src="transfer-left-menu.bg.png" alt="Ляво меню - дивизии" />
-    </panel>
-    <panel>
-        <img src="transfer-left-menu-items.bg.png" alt="Ляво меню - артикули" />
-    </panel>
-</split-panel>
+
+    
+![Ляво меню - дивизии](transfer-left-menu.bg.png)
+    
+    
+![Ляво меню - артикули](transfer-left-menu-items.bg.png)
+    
+
 
 <br></br>
 
@@ -104,14 +104,14 @@ sidebar_position: 9
 
 Избирането на партида към артикул е възможна от детайли за артикула, където се избира *Избери партида*. На дисплея се визуализира списък с текущо активните партиди за артикула.
 
-<split-panel>
-    <panel>
-        <img src="transfer-batch-add.bg.png" alt="Избери партида" />
-    </panel>
-    <panel>
-        <img src="transfer-batch-list.bg.png" alt="Партиди - списък" />
-    </panel>
-</split-panel>
+
+    
+![Избери партида](transfer-batch-add.bg.png)
+    
+    
+![Партиди - списък](transfer-batch-list.bg.png)
+    
+
 
 <br></br>
 
@@ -126,14 +126,14 @@ sidebar_position: 9
 Политис мобилно приложение дава възможност за регистриране на нова партида за артикул при трансфер, когато е необходимо или няма налична активна партида, която може да се избере от списъка с партиди.
 За регистриране на нова партида от детайли за артикул се избира *Нова партида*. На дисплея се визуализира форма за регистриране на нова партида.
 
-<split-panel>
-    <panel>
-        <img src="transfer-batch-new.bg.png" alt="Нова партида" />
-    </panel>
-    <panel>
-        <img src="transfer-batch-new-form.bg.png" alt="Нова партида - форма" />
-    </panel>
-</split-panel>
+
+    
+![Нова партида](transfer-batch-new.bg.png)
+    
+    
+![Нова партида - форма](transfer-batch-new-form.bg.png)
+    
+
 
 <br></br>
 
@@ -154,14 +154,14 @@ sidebar_position: 9
 
 След добавяне на всички артикули към предаването се натиска бутон *Завърши*. На дисплея на устройството се визуализира екран за потвърждение на предаване със статистика за получените, чакащите и добавените не заявени артикули към текущия трансфер. За потвърждение на предаването се натиска бутон *Завърши предаването*.
 
-<split-panel>
-    <panel>
-        <img src="transfer-finilize.bg.png" alt="Завърши" />
-    </panel>
-    <panel>
-        <img src="transfer-checkout.bg.png" alt="Завърши предаването" />
-    </panel>
-</split-panel>
+
+    
+![Завърши](transfer-finilize.bg.png)
+    
+    
+![Завърши предаването](transfer-checkout.bg.png)
+    
+
 
 <br></br>
 
@@ -169,26 +169,26 @@ sidebar_position: 9
 
 От списъка с трансфери може да се проверят детайли за трансфера и да се отпечата документ с предадените артикули по трансфера до момента.
 
-<split-panel>
-    <panel>
-        <img src="transfer-details.bg.png" alt="Детайли" />
-    </panel>
-    <panel>
-        <img src="transfer-details-screen.bg.png" alt="Детайли за трансфер" />
-    </panel>
-</split-panel>
+
+    
+![Детайли](transfer-details.bg.png)
+    
+    
+![Детайли за трансфер](transfer-details-screen.bg.png)
+    
+
 
 <br></br>
 
 След като предаването на стока е завършено напълно трансферът трябва да се завърши от бутон *Завърши* от списъка с трансфери.
 
-<split-panel>
-    <panel>
-        <img src="transfer-close.bg.png" alt="Завърши" />
-    </panel>
-    <panel>
-        <img src="transfer-closed.bg.png" alt="Завършен трансфер" />
-    </panel>
-</split-panel>
+
+    
+![Завърши](transfer-close.bg.png)
+    
+    
+![Завършен трансфер](transfer-closed.bg.png)
+    
+
 
 <br></br>

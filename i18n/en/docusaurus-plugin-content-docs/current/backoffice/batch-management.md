@@ -17,14 +17,14 @@ Please select “Batches” from the product catalog.
 ![Batches](./product-list-action-menu.en.png)
 
 
-<split-panel>
-  <panel>
+
+  
     If the command is successful then it will be displayed a list with batches for the corresponding item:
-  </panel>
-  <panel>
-    <img src="./batches-list-action-menu.en.png"/>
-  </panel>
-</split-panel>
+  
+  
+![](./batches-list-action-menu.en.png)
+  
+
 
 
 The batch edit is performed from the "Edit" menu on the same line:

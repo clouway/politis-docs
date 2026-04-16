@@ -81,33 +81,33 @@ Politis позволява използването на баркод четци
 
 След тези настройки артикулите могат да бъдат добавени чрез изполване на баркод четци от Politis мобилно приложение.
 
-<split-panel>
-  <panel>
-    <img src="./barcode-patterns-direct-sale.bg.png" alt="Директна продажба"/>
-  </panel>
-  <panel>
-    <img src="./barcode-patterns-order.bg.png" alt="Поръчка"/>
-  </panel>
-</split-panel>
+
+  
+![Директна продажба](./barcode-patterns-direct-sale.bg.png)
+  
+  
+![Поръчка](./barcode-patterns-order.bg.png)
+  
+
 
 <br></br>
 
-<split-panel>
-  <panel>
-    <img src="./barcode-patterns-shipment.bg.png" alt="Нова доставка"/>
-  </panel>
-  <panel>
-    <img src="./barcode-patterns-transfer-new.bg.png" alt="Заявка за трансфер"/>
-  </panel>
-</split-panel>
+
+  
+![Нова доставка](./barcode-patterns-shipment.bg.png)
+  
+  
+![Заявка за трансфер](./barcode-patterns-transfer-new.bg.png)
+  
+
 
 <br></br>
 
-<split-panel>
-  <panel>
-    <img src="./barcode-patterns-transfer.bg.png" alt="Трансфер на стока"/>
-  </panel>
-  <panel>
-    <img src="./barcode-patterns-purchase.bg.png" alt="Поръчка за покупка на стока"/>
-  </panel>
-</split-panel>
+
+  
+![Трансфер на стока](./barcode-patterns-transfer.bg.png)
+  
+  
+![Поръчка за покупка на стока](./barcode-patterns-purchase.bg.png)
+  
+

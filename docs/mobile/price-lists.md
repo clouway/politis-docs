@@ -10,7 +10,7 @@ sidebar_position: 9
 
 ## Номенклатура на клиенти
 
-Подробно описание на работа с номенклатура на клиенти и промяна на ценови листи - <link to="/politis/mobile/relationship-management/relationship-management/" name="Управление на Клиенти - мобилно приложение" ></link>
+Подробно описание на работа с номенклатура на клиенти и промяна на ценови листи - [Управление на Клиенти - мобилно приложение](/politis/mobile/relationship-management/relationship-management/)
 
 <br></br>
 
@@ -19,14 +19,14 @@ sidebar_position: 9
 За достъп до детайли за клиентски обект от главното меню се избира *Клиентски обекти*. На дисплея на устройството се визуализира екран за търсене на клиентски обекти.
 
 
-<split-panel>
-    <panel>
-        <img src="./main-menu-locations.bg.png" alt="Клиентски обекти" />
-    </panel>
-     <panel>
-        <img src="./customer-locations-search.bg.png" alt="Клиентски обекти - търсене" />
-    </panel>
-</split-panel>
+
+    
+![Клиентски обекти](./main-menu-locations.bg.png)
+    
+     
+![Клиентски обекти - търсене](./customer-locations-search.bg.png)
+    
+
 
 <br></br>
 
@@ -43,14 +43,14 @@ sidebar_position: 9
 
 На дисплея на устройството се визуализират детайли за клиентски обект. За достъп до ценови листи се избира *Ценови листи* от списъка с операции. След избиране на операцията се визуализира екран за управление на ценови листи.
 
-<split-panel>
-    <panel>
-        <img src="./customer-locations-details.bg.png" alt="Клиентски обекти - детайли" />
-    </panel>
-     <panel>
-        <img src="./price-lists-screen.bg.png" alt="Ценови листи" />
-    </panel>
-</split-panel>и
+
+    
+![Клиентски обекти - детайли](./customer-locations-details.bg.png)
+    
+     
+![Ценови листи](./price-lists-screen.bg.png)
+    
+и
 
 <br></br>
 
@@ -58,14 +58,14 @@ sidebar_position: 9
 
 Добавяне на нова ценова листа се извърва с натискане на бутон *Избери*, при което се отваря диалогов прозорец с всички регистрирани ценови листи. Ако дадена ценова листа е вече добавена, то тя няма да се визуализира в този списък.
 
-<split-panel>
-    <panel>
-        <img src="./price-lists-add.bg.png" alt="Ценови листи - добавяне" />
-    </panel>
-     <panel>
-        <img src="./price-lists-modal.bg.png" alt="Ценови листи - списък" />
-    </panel>
-</split-panel>
+
+    
+![Ценови листи - добавяне](./price-lists-add.bg.png)
+    
+     
+![Ценови листи - списък](./price-lists-modal.bg.png)
+    
+
 
 <br></br>
 
@@ -87,6 +87,6 @@ sidebar_position: 9
 
 ![Price Lists](./customer-locations-price-lists.bg.png "Клиентски обекти - ценови листи")
 
-За **подробни настройки на ценови листи и ценообразуване** - <link to="/politis/guide/pricelist-management/pricelist-management/" name="Управление на ценови политики - уеб" ></link>
+За **подробни настройки на ценови листи и ценообразуване** - [Управление на ценови политики - уеб](/politis/guide/pricelist-management/pricelist-management/)
 
-При промяна на ценови листи на клиент от мобилното приложение на Политис трябва да се вземе под внимание **приоритета за прилагане на ценови листи и специални отстъпки към клиенти и клиентски обекти** - <link to="/politis/guide/pricelist-management/pricelist-management/#отправни-точки-при-ценообразуване" name="Отправни точки при ценообразуване" ></link>
+При промяна на ценови листи на клиент от мобилното приложение на Политис трябва да се вземе под внимание **приоритета за прилагане на ценови листи и специални отстъпки към клиенти и клиентски обекти** - [Отправни точки при ценообразуване](/politis/guide/pricelist-management/pricelist-management/#отправни-точки-при-ценообразуване)

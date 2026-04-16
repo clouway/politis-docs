@@ -14,14 +14,14 @@ sidebar_position: 6
 
 ![Stock Adkustments](./list-stock-adjustment.png "Списък с липси и излишъци")
 
-<split-panel>
-  <panel>
+
+  
     Hова корекция се извършва чрез бутона в долната част на екрана.
-  </panel>
-  <panel>
-    <img src="./add-stock-adjustment.png" alt="Нова корекция"/>
-  </panel>
-</split-panel>
+  
+  
+![Нова корекция](./add-stock-adjustment.png)
+  
+
 
 <br>
 
@@ -40,14 +40,14 @@ sidebar_position: 6
 След попълване на всички необходими полета се натиска бутон *Запази*
 
 
-<split-panel>
-  <panel>
+
+  
     За всяка корекция може да се отпечата <i>Протокол за липси и излишъци</i>. За целта от контекстното меню се избира <i>Отпечатай</i> за всеки ред от  списъка с липси и излишъци.
-  </panel>
-  <panel>
-    <img src="./menu-print.png" alt="Отпечатай"/>
-  </panel>
-</split-panel>
+  
+  
+![Отпечатай](./menu-print.png)
+  
+
 
 <br>
 
