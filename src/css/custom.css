@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+/**
+ * Politis brand palette — wired both to Infima (Docusaurus default CSS vars)
+ * and to Tailwind (via @theme). This lets us use `text-politis-primary`,
+ * `bg-politis-blue-dark`, etc. inside React components.
+ */
+
+@theme {
+  --color-politis-primary: #264F89;
+  --color-politis-primary-dark: #1a375e;
+  --color-politis-primary-light: #4078c3;
+  --color-politis-blue-muted: #0079AD;
+  --color-politis-green: #89E483;
+  --color-politis-aqua: #00A1B5;
+  --color-politis-teal: #00C5A2;
+  --color-politis-warning: #D97706;
+  --color-politis-danger: #DC2626;
+}
+
+:root {
+  --ifm-color-primary: #264F89;
+  --ifm-color-primary-dark: #22477b;
+  --ifm-color-primary-darker: #204374;
+  --ifm-color-primary-darkest: #1a375e;
+  --ifm-color-primary-light: #2c5b9f;
+  --ifm-color-primary-lighter: #2f61aa;
+  --ifm-color-primary-lightest: #4078c3;
+
+  --ifm-color-secondary: #0079AD;
+  --ifm-color-success: #89E483;
+  --ifm-color-warning: #D97706;
+  --ifm-color-danger: #DC2626;
+
+  --ifm-navbar-background-color: #264F89;
+  --ifm-navbar-link-color: #ffffff;
+  --ifm-navbar-link-hover-color: #89E483;
+  --ifm-navbar-search-input-background-color: rgba(255, 255, 255, 0.15);
+  --ifm-navbar-search-input-color: #ffffff;
+  --ifm-navbar-search-input-placeholder-color: rgba(255, 255, 255, 0.7);
+
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(38, 79, 137, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #6b95ce;
+  --ifm-color-primary-dark: #5282c4;
+  --ifm-color-primary-darker: #4679bf;
+  --ifm-color-primary-darkest: #3a6aab;
+  --ifm-color-primary-light: #84a8d8;
+  --ifm-color-primary-lighter: #90b1dc;
+  --ifm-color-primary-lightest: #b3cae8;
+
+  --ifm-navbar-background-color: #1a375e;
+  --ifm-navbar-link-color: #ffffff;
+  --ifm-navbar-link-hover-color: #89E483;
+
+  --docusaurus-highlighted-code-line-bg: rgba(107, 149, 206, 0.15);
+}
+
+/*
+ * Tailwind v4 resets `a` to text-decoration: none and removes some baseline
+ * styles. Re-enable Docusaurus' link styles so in-content links keep underlines.
+ */
+.markdown a,
+article a {
+  color: var(--ifm-link-color);
+  text-decoration: underline;
+}
+
+.markdown a:hover,
+article a:hover {
+  color: var(--ifm-link-hover-color);
+}
+
+/* Navbar logo sizing — the launcher icon is square; cap its height. */
+.navbar__logo {
+  height: 32px;
+}
+.navbar__logo img {
+  height: 100%;
+  width: auto;
+  border-radius: 4px;
+  display: block;
+}
+
+.navbar__toggle,
+.navbar__items .navbar__link,
+.navbar__items .navbar__brand {
+  color: var(--ifm-navbar-link-color);
+}
+
+/* Render emoji glyphs with system colour emoji font, so category labels keep
+   their colour across Linux CI renderers and cold-cached browsers. */
+.menu__link,
+.navbar__item,
+h1, h2, h3 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif,
+               "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+               "Noto Color Emoji";
+}
+
+/*
+ * Docs sidebar (desktop left column): subtle tint on active item.
+ * Scoped to `.theme-doc-sidebar-menu` so it does NOT leak into the mobile
+ * navbar overlay, which inherits the blue navbar background.
+ */
+.theme-doc-sidebar-menu .menu__link--active:not(.menu__link--sublist) {
+  background: rgba(38, 79, 137, 0.08);
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-menu .menu__link--active:not(.menu__link--sublist) {
+  background: rgba(107, 149, 206, 0.15);
+  color: var(--ifm-color-primary-lightest);
+}
+
+/*
+ * Mobile navbar overlay (hamburger menu): its background inherits
+ * --ifm-navbar-background-color (blue). Force white link/text colour so
+ * everything is readable on the dark blue panel.
+ */
+.navbar-sidebar,
+.navbar-sidebar__items,
+.navbar-sidebar__brand {
+  background-color: var(--ifm-navbar-background-color);
+  color: #ffffff;
+}
+
+.navbar-sidebar .menu__link,
+.navbar-sidebar .navbar-sidebar__back,
+.navbar-sidebar .menu__caret,
+.navbar-sidebar .clean-btn {
+  color: #ffffff;
+}
+
+.navbar-sidebar .menu__link:hover,
+.navbar-sidebar .menu__link--active {
+  background-color: rgba(255, 255, 255, 0.10);
+  color: #ffffff;
+}
+
+.navbar-sidebar .menu__link--sublist-caret::after,
+.navbar-sidebar .menu__caret::before {
+  filter: brightness(0) invert(1); /* render the chevron SVG white */
+}
+
+.navbar-sidebar .navbar-sidebar__close {
+  color: #ffffff;
+}
