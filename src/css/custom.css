@@ -1,4 +1,12 @@
-@import "tailwindcss";
+/*
+ * Tailwind v4 — integrated without Preflight so we don't clobber the
+ * Infima (Docusaurus) defaults for buttons, navbar, menu, etc.
+ * We only pull in the theme tokens and utilities.
+ */
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
 
 /**
  * Politis brand palette — wired both to Infima (Docusaurus default CSS vars)
