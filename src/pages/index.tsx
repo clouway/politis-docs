@@ -35,28 +35,27 @@ function Hero() {
   const {siteConfig} = useDocusaurusContext();
   const logo = useBaseUrl('img/logo.png');
   return (
-    <header
-      className="text-white text-center px-4 py-20"
-      style={{background: 'linear-gradient(135deg, #264F89 0%, #1a375e 100%)'}}
-    >
+    <header className="politis-hero text-center px-4 py-20 md:py-24">
       <img
         src={logo}
         alt="Politis"
-        className="w-24 h-24 mx-auto mb-6 rounded-2xl shadow-2xl"
+        width={96}
+        height={96}
+        className="politis-hero__logo w-24 h-24 mx-auto mb-7"
       />
-      <h1 className="text-5xl font-bold mb-2">{siteConfig.title}</h1>
-      <p className="text-xl opacity-90 mb-8">{siteConfig.tagline}</p>
+      <h1 className="politis-hero__title mb-3">{siteConfig.title}</h1>
+      <p className="politis-hero__tagline max-w-xl mx-auto mb-9">
+        {siteConfig.tagline}
+      </p>
       <div className="flex gap-4 justify-center flex-wrap">
         <Link
           className="button button--lg button--success"
-          to="/get-started/introduction"
-        >
+          to="/get-started/introduction">
           Започни тук
         </Link>
         <Link
           className="button button--lg button--outline hero-ghost-btn"
-          to="/mobile/cash-session"
-        >
+          to="/mobile/cash-session">
           Касов отчет (ново)
         </Link>
       </div>
@@ -69,16 +68,17 @@ function FeatureGrid() {
     <section className="max-w-6xl mx-auto px-4 py-16">
       <div className="grid gap-6 md:grid-cols-3">
         {FEATURES.map((f) => (
-          <Link
-            key={f.to}
-            to={f.to}
-            className="block p-8 rounded-xl border border-[color:var(--ifm-color-emphasis-200)] bg-[color:var(--ifm-background-surface-color)] hover:-translate-y-1 hover:shadow-xl hover:border-[color:var(--ifm-color-primary)] transition-all !no-underline !text-inherit"
-          >
-            <div className="text-5xl mb-4">{f.icon}</div>
-            <h3 className="text-xl font-semibold mb-2 text-[color:var(--ifm-color-primary)]">
+          <Link key={f.to} to={f.to} className="politis-card">
+            <span className="politis-card__icon" aria-hidden="true">
+              {f.icon}
+            </span>
+            <h2 className="politis-card__title">
               {f.title}
-            </h3>
-            <p className="opacity-80 m-0">{f.text}</p>
+              <span className="politis-card__arrow" aria-hidden="true">
+                →
+              </span>
+            </h2>
+            <p className="politis-card__text">{f.text}</p>
           </Link>
         ))}
       </div>

@@ -2,6 +2,11 @@
  * Tailwind v4 — integrated without Preflight so we don't clobber the
  * Infima (Docusaurus) defaults for buttons, navbar, menu, etc.
  * We only pull in the theme tokens and utilities.
+ *
+ * NOTE ON CASCADE: everything below the Tailwind imports is *unlayered*, so it
+ * outranks both Tailwind utilities and Infima. Keep content typography scoped
+ * to `.markdown` / `.theme-doc-*` so it never leaks onto the landing page,
+ * which is built out of Tailwind utilities.
  */
 @layer theme, base, components, utilities;
 
@@ -26,6 +31,10 @@
   --color-politis-danger: #DC2626;
 }
 
+/* =========================================================================
+   1. TOKENS
+   ========================================================================= */
+
 :root {
   --ifm-color-primary: #264F89;
   --ifm-color-primary-dark: #22477b;
@@ -34,26 +43,130 @@
   --ifm-color-primary-light: #2c5b9f;
   --ifm-color-primary-lighter: #2f61aa;
   --ifm-color-primary-lightest: #4078c3;
+  --ifm-color-primary-contrast-background: #eaf0f9;
+  --ifm-color-primary-contrast-foreground: #16294a;
 
   --ifm-color-secondary: #0079AD;
+
+  /*
+   * Infima only derives the ramp for colours it ships with: overriding
+   * `--ifm-color-success` alone left `--ifm-color-success-dark` on Infima's
+   * pure #009400, so the brand-green button turned a different green on hover
+   * and the `:::tip` rail was never brand-coloured. Same story for the
+   * `:::note` rail, which fell back to a near-white grey. Each semantic colour
+   * therefore ships its full ramp plus both admonition contrast pairs.
+   */
   --ifm-color-success: #89E483;
+  --ifm-color-success-dark: #6DE067;
+  --ifm-color-success-darker: #5CDC56;
+  --ifm-color-success-darkest: #48D841;
+  --ifm-color-success-light: #9DEA99;
+  --ifm-color-success-lighter: #AEEEAA;
+  --ifm-color-success-lightest: #C2F2C0;
+  --ifm-color-success-contrast-background: #eefaed;
+  --ifm-color-success-contrast-foreground: #143d11;
+
+  --ifm-color-info: #00A1B5;
+  --ifm-color-info-dark: #00919e;
+  --ifm-color-info-darker: #008795;
+  --ifm-color-info-darkest: #006f7b;
+  --ifm-color-info-light: #12b7cc;
+  --ifm-color-info-lighter: #2cc4d7;
+  --ifm-color-info-lightest: #7fdce8;
+  --ifm-color-info-contrast-background: #e6f6f8;
+  --ifm-color-info-contrast-foreground: #06333a;
+
   --ifm-color-warning: #D97706;
+  --ifm-color-warning-dark: #c36b05;
+  --ifm-color-warning-darker: #b86505;
+  --ifm-color-warning-darkest: #985404;
+  --ifm-color-warning-light: #f08611;
+  --ifm-color-warning-lighter: #f5952c;
+  --ifm-color-warning-lightest: #f9bb75;
+  --ifm-color-warning-contrast-background: #fdf3e6;
+  --ifm-color-warning-contrast-foreground: #4a2903;
+
   --ifm-color-danger: #DC2626;
+  --ifm-color-danger-dark: #c62222;
+  --ifm-color-danger-darker: #bb2020;
+  --ifm-color-danger-darkest: #9a1a1a;
+  --ifm-color-danger-light: #e34242;
+  --ifm-color-danger-lighter: #e75858;
+  --ifm-color-danger-lightest: #f09292;
+  --ifm-color-danger-contrast-background: #fceaea;
+  --ifm-color-danger-contrast-foreground: #4b0f0f;
+
+  /* `:::note` renders as alert--secondary. A calm slate reads as "aside"
+     without competing with the blue brand. */
+  --ifm-color-secondary-contrast-background: #f2f5f9;
+  --ifm-color-secondary-contrast-foreground: #2b3543;
+  --ifm-color-secondary-dark: #9db0c8;
+
+  /*
+   * Cyrillic-first stack. Infima's default puts Ubuntu and Cantarell ahead of
+   * Noto Sans; both have idiosyncratic or thin Cyrillic coverage, and neither
+   * carries the Bulgarian `locl` forms that `htmlLang: bg-BG` asks for. Noto
+   * Sans / PT Sans / DejaVu do, so they move up. The colour-emoji fonts are
+   * appended here (rather than re-declared per component) so emoji in sidebar
+   * category labels render in colour everywhere.
+   */
+  --ifm-font-family-base: system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Noto Sans", "PT Sans", "Liberation Sans",
+    "DejaVu Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
 
   --ifm-navbar-background-color: #264F89;
   --ifm-navbar-link-color: #ffffff;
   --ifm-navbar-link-hover-color: #89E483;
+  --ifm-navbar-shadow: 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 2px 10px rgba(16, 32, 56, 0.16);
   --ifm-navbar-search-input-background-color: rgba(255, 255, 255, 0.15);
   --ifm-navbar-search-input-color: #ffffff;
   --ifm-navbar-search-input-placeholder-color: rgba(255, 255, 255, 0.7);
 
-  /* Docs sidebar active item — light blue pill + dark blue bold text. */
+  /* Docs sidebar active item — solid primary pill, see §6. */
   --ifm-menu-color-background-active: rgba(38, 79, 137, 0.10);
   --ifm-menu-color-background-hover: rgba(38, 79, 137, 0.06);
   --ifm-menu-color-active: var(--ifm-color-primary);
 
-  --ifm-code-font-size: 95%;
+  --ifm-code-font-size: 92%;
+  --ifm-code-padding-horizontal: 0.35em;
+  --ifm-code-padding-vertical: 0.15em;
+  --ifm-code-background: #eef2f7;
   --docusaurus-highlighted-code-line-bg: rgba(38, 79, 137, 0.1);
+
+  --ifm-blockquote-color: var(--ifm-color-emphasis-700);
+  --ifm-blockquote-border-color: var(--ifm-color-primary-lightest);
+  --ifm-blockquote-border-left-width: 3px;
+
+  --ifm-table-head-background: var(--politis-surface-soft);
+  --ifm-table-border-color: var(--politis-rule);
+  --ifm-table-stripe-background: rgba(38, 79, 137, 0.03);
+
+  /* ---- Politis-specific tokens -------------------------------------- */
+
+  /* Reading measure vs. media width. Prose is capped near 75 Cyrillic
+     characters; screenshots get the wider column so downscaling costs less. */
+  --politis-measure: 40rem;
+  --politis-content-max: 50rem;
+
+  --politis-rule: #e1e7f0;
+  --politis-rule-strong: #c9d3e2;
+  --politis-surface: #ffffff;
+  --politis-surface-soft: #f5f8fc;
+  --politis-frame-border: #dae2ee;
+  --politis-frame-bg: #ffffff;
+
+  --politis-link-underline: rgba(38, 79, 137, 0.32);
+
+  --politis-shadow-sm: 0 1px 2px rgba(21, 38, 66, 0.07);
+  --politis-shadow-md: 0 1px 2px rgba(21, 38, 66, 0.05),
+    0 8px 20px -10px rgba(21, 38, 66, 0.22);
+  --politis-shadow-lg: 0 2px 4px rgba(21, 38, 66, 0.06),
+    0 18px 40px -16px rgba(21, 38, 66, 0.32);
+
+  --politis-footer-bg: #1a375e;
+  --politis-overlay: rgba(12, 20, 33, 0.86);
 }
 
 [data-theme='dark'] {
@@ -64,55 +177,440 @@
   --ifm-color-primary-light: #84a8d8;
   --ifm-color-primary-lighter: #90b1dc;
   --ifm-color-primary-lightest: #b3cae8;
+  --ifm-color-primary-contrast-background: #16243a;
+  --ifm-color-primary-contrast-foreground: #dbe6f6;
+
+  /* A faint blue cast in the dark surfaces keeps the neutral greys from
+     fighting the blue chrome above and below the page. */
+  --ifm-background-color: #14181f;
+  --ifm-background-surface-color: #1b2029;
 
   --ifm-navbar-background-color: #1a375e;
   --ifm-navbar-link-color: #ffffff;
   --ifm-navbar-link-hover-color: #89E483;
+  --ifm-navbar-shadow: 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 2px 12px rgba(0, 0, 0, 0.5);
 
   --ifm-menu-color-background-active: rgba(107, 149, 206, 0.18);
   --ifm-menu-color-background-hover: rgba(107, 149, 206, 0.10);
   --ifm-menu-color-active: var(--ifm-color-primary-lightest);
 
+  --ifm-code-background: rgba(255, 255, 255, 0.08);
   --docusaurus-highlighted-code-line-bg: rgba(107, 149, 206, 0.15);
+
+  --ifm-color-success-contrast-background: #14301a;
+  --ifm-color-success-contrast-foreground: #cdf0ca;
+  --ifm-color-info-contrast-background: #062b31;
+  --ifm-color-info-contrast-foreground: #c5eaf0;
+  --ifm-color-warning-contrast-background: #3a230a;
+  --ifm-color-warning-contrast-foreground: #f6dcbb;
+  --ifm-color-danger-contrast-background: #3b1414;
+  --ifm-color-danger-contrast-foreground: #f5cdcd;
+  --ifm-color-secondary-contrast-background: #232a35;
+  --ifm-color-secondary-contrast-foreground: #d6dee9;
+  --ifm-color-secondary-dark: #4d5f79;
+
+  --ifm-blockquote-color: var(--ifm-color-emphasis-700);
+  --ifm-blockquote-border-color: var(--ifm-color-primary-darkest);
+
+  --ifm-table-stripe-background: rgba(255, 255, 255, 0.035);
+
+  --politis-rule: #2b3341;
+  --politis-rule-strong: #3d4859;
+  --politis-surface: #1b2029;
+  --politis-surface-soft: #202634;
+  --politis-frame-border: #343d4d;
+  /* Screenshots are overwhelmingly light-UI captures; the frame sits on a
+     near-black mat so the clipped corners never flash white. */
+  --politis-frame-bg: #0e1116;
+
+  --politis-link-underline: rgba(139, 174, 222, 0.42);
+
+  --politis-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --politis-shadow-md: 0 1px 2px rgba(0, 0, 0, 0.4),
+    0 8px 22px -10px rgba(0, 0, 0, 0.7);
+  --politis-shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.5),
+    0 20px 44px -16px rgba(0, 0, 0, 0.8);
+
+  --politis-footer-bg: #162740;
+  --politis-overlay: rgba(4, 7, 12, 0.9);
+}
+
+/* =========================================================================
+   2. DOC CONTENT — measure, rhythm, Cyrillic body copy
+   ========================================================================= */
+
+/*
+ * At >=1440px Infima widens the container to 1320px, which stretched doc lines
+ * past 110 Cyrillic characters. Cap the whole doc column (media included) and
+ * cap prose tighter still. Only stable `theme-doc-*` class names are used, so
+ * this survives Docusaurus' hashed CSS-module names.
+ */
+.theme-doc-markdown,
+.theme-doc-breadcrumbs,
+.theme-doc-toc-mobile,
+.theme-doc-footer,
+.docusaurus-mt-lg.pagination-nav {
+  max-width: var(--politis-content-max);
+}
+
+.theme-doc-markdown.markdown {
+  /* 17px: Cyrillic lowercase runs optically smaller than Latin at the same
+     size, and these are long procedural pages. */
+  font-size: 1.0625rem;
+  line-height: 1.72;
+  /* Infima derives paragraph and heading spacing from --ifm-leading; bumping
+     it keeps the vertical rhythm proportional to the larger body size. */
+  --ifm-leading-desktop: 1.5;
 }
 
 /*
- * Tailwind v4 resets `a` to text-decoration: none and removes some baseline
- * styles. Re-enable Docusaurus' link styles so in-content links keep underlines.
+ * Running text gets the tighter measure. Headings, tables and screenshots keep
+ * the full column: they are scanned rather than read, and the section rule on
+ * h2 only works as a divider if it spans everything under it.
+ */
+.markdown > p,
+.markdown > ul,
+.markdown > ol,
+.markdown > dl,
+.markdown > blockquote,
+.markdown > .theme-admonition,
+.markdown > header {
+  max-width: var(--politis-measure);
+}
+
+/* Screenshots are the exception: they keep the full doc column. */
+.markdown > p:has(> .politis-shot),
+.markdown > p:has(> .politis-zoom) {
+  max-width: none;
+  margin-block: 1.75rem;
+}
+
+.markdown li {
+  overflow-wrap: break-word;
+}
+
+.markdown > ul,
+.markdown > ol {
+  padding-left: 1.35rem;
+}
+
+.markdown li + li {
+  margin-top: 0.35rem;
+}
+
+/* ---- Headings ---------------------------------------------------------- */
+
+/*
+ * A fluid scale replaces Infima's two-step (desktop / <=996px) sizes: the
+ * unlayered rules here would otherwise beat Infima's media queries and leave
+ * mobile with desktop-sized headings. Bulgarian headings are long, so the top
+ * of the scale is pulled down from 3rem and set to balance across lines.
+ */
+.markdown h1:first-child {
+  --ifm-h1-font-size: clamp(1.9rem, 1.35rem + 2.1vw, 2.5rem);
+  line-height: 1.18;
+  letter-spacing: -0.012em;
+}
+
+.markdown > h2 {
+  --ifm-h2-font-size: clamp(1.4rem, 1.16rem + 0.95vw, 1.75rem);
+  letter-spacing: -0.008em;
+  /* Long, screenshot-broken pages need a visible section boundary; images
+     otherwise swallow the gap that is supposed to signal "new section". */
+  margin-top: 3.25rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--politis-rule);
+}
+
+.markdown > header + h2 {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.markdown > h3 {
+  --ifm-h3-font-size: clamp(1.15rem, 1.05rem + 0.4vw, 1.3rem);
+  margin-top: 2.25rem;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+  text-wrap: balance;
+}
+
+/* ---- Links ------------------------------------------------------------- */
+
+/*
+ * Tailwind v4 resets `a` to text-decoration: none. Docusaurus' link styles are
+ * restored here, but with a tinted, offset underline: these pages are dense
+ * with cross-links (the overview pages are entirely link tables) and a full
+ * strength underline under every one of them turns the text to stripes.
  */
 .markdown a,
 article a {
   color: var(--ifm-link-color);
   text-decoration: underline;
+  text-decoration-color: var(--politis-link-underline);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: text-decoration-color var(--ifm-transition-fast) ease;
 }
 
 .markdown a:hover,
 article a:hover {
   color: var(--ifm-link-hover-color);
+  text-decoration-color: currentColor;
 }
 
+/* ---- Tables ------------------------------------------------------------ */
+
 /*
- * Ghost/outline button for use on the dark hero (landing page).
- * White text + white border, tinted on hover. Infima's default
- * button--outline keeps the variant's text colour (black for
- * button--secondary), which disappears on the dark gradient.
+ * The overview pages are walls of two-column index tables; Infima renders them
+ * as loose grids with no grouping, so they get a card frame instead.
+ *
+ * `width: fit-content` is load-bearing: Infima sets `display: block; overflow:
+ * auto` on tables so they scroll on narrow screens, which leaves the block box
+ * full width while the cells inside shrink-to-fit — the frame would otherwise
+ * float free of its own content.
  */
-.hero-ghost-btn {
-  background: transparent;
-  color: #ffffff;
-  border: 2px solid rgba(255, 255, 255, 0.7);
+.markdown table {
+  border: 1px solid var(--politis-rule);
+  border-radius: 10px;
+  border-collapse: separate;
+  border-spacing: 0;
+  box-shadow: var(--politis-shadow-sm);
+  margin-block: 1.5rem;
+  width: fit-content;
+  max-width: 100%;
+  font-size: 0.97em;
 }
-.hero-ghost-btn:hover,
-.hero-ghost-btn:focus {
-  background: rgba(255, 255, 255, 0.12);
+
+.markdown table th,
+.markdown table td {
+  border: 0;
+  border-bottom: 1px solid var(--politis-rule);
+  padding: 0.7rem 0.9rem;
+  vertical-align: top;
+  text-align: left;
+}
+
+.markdown table thead tr {
+  border-bottom: 0;
+}
+
+.markdown table th {
+  background-color: var(--politis-surface-soft);
+  font-weight: 600;
+  font-size: 0.9em;
+  letter-spacing: 0.02em;
+  color: var(--ifm-color-emphasis-700);
+  border-bottom: 1px solid var(--politis-rule-strong);
+}
+
+.markdown table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.markdown table tbody tr:hover {
+  background-color: var(--ifm-table-stripe-background);
+}
+
+/* ---- Inline code, code blocks, blockquotes ----------------------------- */
+
+.markdown code {
+  border-color: var(--politis-rule);
+  border-radius: 5px;
+}
+
+.markdown blockquote {
+  background: var(--politis-surface-soft);
+  border-radius: 0 8px 8px 0;
+  padding: 0.85rem 1.1rem;
+  margin-block: 1.5rem;
+}
+
+.markdown blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.theme-code-block {
+  border-radius: 10px;
+  box-shadow: var(--politis-shadow-sm);
+}
+
+/* ---- Admonitions ------------------------------------------------------- */
+
+.markdown .theme-admonition {
+  border-radius: 10px;
+  border-left-width: 4px;
+  box-shadow: none;
+  margin-block: 1.75rem;
+  padding: 1rem 1.15rem;
+}
+
+.markdown .theme-admonition > :last-child {
+  margin-bottom: 0;
+}
+
+.markdown .theme-admonition .alert__heading,
+.markdown .theme-admonition [class*='admonitionHeading'] {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  opacity: 0.85;
+}
+
+/* =========================================================================
+   3. SCREENSHOTS
+   Framing/zoom policy is decided in src/theme/MDXComponents/Img — see the
+   comment there for the size thresholds.
+   ========================================================================= */
+
+/* Replaces the `height: auto` that the ejected theme Img used to supply.
+   --politis-shot-cap is set inline for tall captures so the clamp lands on
+   *width*, which is the aspect-ratio-safe axis for an <img>. */
+.politis-img {
+  height: auto;
+  max-width: min(100%, var(--politis-shot-cap, 100%));
+}
+
+.politis-shot {
+  display: block;
+  border: 1px solid var(--politis-frame-border);
+  border-radius: 10px;
+  background-color: var(--politis-frame-bg);
+  box-shadow: var(--politis-shadow-md);
+  transition: border-color var(--ifm-transition-fast) ease,
+    box-shadow var(--ifm-transition-fast) ease,
+    filter var(--ifm-transition-fast) ease;
+}
+
+/* A full-brightness white UI capture on a #14181f page is a glare bomb.
+   Knocking it back a touch — and restoring it on hover — keeps the page calm
+   without dulling the screenshot you are actually looking at. */
+[data-theme='dark'] .politis-shot {
+  filter: brightness(0.9);
+}
+
+[data-theme='dark'] .politis-shot:hover {
+  filter: none;
+}
+
+.politis-zoom {
+  display: block;
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: zoom-in;
+  border-radius: 12px;
+}
+
+.politis-zoom:focus-visible {
+  outline: 3px solid var(--ifm-color-primary);
+  outline-offset: 4px;
+}
+
+/* `cursor: zoom-in` alone is easy to miss; lifting the frame on hover says
+   "this opens" before the pointer changes. */
+.politis-zoom:hover .politis-shot {
+  border-color: var(--ifm-color-primary);
+  box-shadow: var(--politis-shadow-lg);
+}
+
+/* ---- Lightbox ---------------------------------------------------------- */
+
+.politis-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--politis-overlay);
+  cursor: zoom-out;
+  animation: politis-fade-in 0.14s ease-out;
+}
+
+.politis-lightbox__figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+  min-height: 0;
+}
+
+.politis-lightbox__img {
+  max-width: min(100%, 1600px);
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  background-color: var(--politis-frame-bg);
+  box-shadow: var(--politis-shadow-lg);
+}
+
+.politis-lightbox__caption {
+  display: block;
+  max-width: 46rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.politis-lightbox__close {
+  position: absolute;
+  top: clamp(0.5rem, 2vw, 1.25rem);
+  right: clamp(0.5rem, 2vw, 1.25rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.politis-lightbox__close:hover,
+.politis-lightbox__close:focus-visible {
+  background: rgba(255, 255, 255, 0.22);
   border-color: #ffffff;
+}
+
+@keyframes politis-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* =========================================================================
+   4. NAVBAR
+   ========================================================================= */
+
+.navbar {
+  box-shadow: var(--ifm-navbar-shadow);
 }
 
 /* Navbar logo sizing — the launcher icon is square; cap its height. */
 .navbar__logo {
   height: 32px;
 }
+
 .navbar__logo img {
   height: 100%;
   width: auto;
@@ -126,43 +624,33 @@ article a:hover {
   color: var(--ifm-navbar-link-color);
 }
 
-/* Render emoji glyphs with system colour emoji font, so category labels keep
-   their colour across Linux CI renderers and cold-cached browsers. */
-.menu__link,
-.navbar__item,
-h1, h2, h3 {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-               "Helvetica Neue", Arial, sans-serif,
-               "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-               "Noto Color Emoji";
+.navbar__title {
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 /*
- * Docs sidebar (desktop left column): active item = primary-coloured
- * pill with white text, plus a left accent bar. Scoped to
- * `.theme-doc-sidebar-menu` so it does NOT leak into the mobile navbar
- * overlay, which inherits the blue navbar background.
- *
- * We also force the inner <span class="linkLabel_*"> to inherit colour —
- * otherwise the module-scoped span can shadow the <a>'s colour.
+ * Three top-level sections live in the navbar and the colour swap alone was a
+ * weak "you are here". An underline rides under the active item; the rule sits
+ * on a pseudo-element so it does not disturb the item's box.
  */
-.theme-doc-sidebar-menu .menu__link--active:not(.menu__link--sublist),
-.theme-doc-sidebar-menu .menu__link--active:not(.menu__link--sublist):hover {
-  background-color: var(--ifm-color-primary);
-  color: #ffffff;
-  font-weight: 600;
-  border-left: 3px solid var(--ifm-color-primary-darkest);
+.navbar__items .navbar__link {
+  position: relative;
 }
 
-.theme-doc-sidebar-menu .menu__link--active > span {
-  color: inherit;
+.navbar__items .navbar__link--active {
+  color: var(--ifm-navbar-link-hover-color);
 }
 
-[data-theme='dark'] .theme-doc-sidebar-menu .menu__link--active:not(.menu__link--sublist),
-[data-theme='dark'] .theme-doc-sidebar-menu .menu__link--active:not(.menu__link--sublist):hover {
-  background-color: var(--ifm-color-primary-darkest);
-  color: #ffffff;
-  border-left-color: var(--ifm-color-primary-lightest);
+.navbar__items .navbar__link--active::after {
+  content: "";
+  position: absolute;
+  left: var(--ifm-navbar-item-padding-horizontal);
+  right: var(--ifm-navbar-item-padding-horizontal);
+  bottom: 0.1rem;
+  height: 2px;
+  border-radius: 2px;
+  background-color: currentColor;
 }
 
 /*
@@ -197,4 +685,345 @@ h1, h2, h3 {
 
 .navbar-sidebar .navbar-sidebar__close {
   color: #ffffff;
+}
+
+/* =========================================================================
+   5. FOOTER
+   ========================================================================= */
+
+.footer--dark {
+  --ifm-footer-background-color: var(--politis-footer-bg);
+  --ifm-footer-link-color: rgba(255, 255, 255, 0.78);
+  --ifm-footer-title-color: #ffffff;
+  --ifm-footer-color: rgba(255, 255, 255, 0.7);
+}
+
+.footer--dark .footer__link-item:hover {
+  color: var(--ifm-navbar-link-hover-color);
+}
+
+.footer__title {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+/* =========================================================================
+   6. DOCS SIDEBAR
+   ========================================================================= */
+
+/*
+ * The backoffice tree is ~20 flat entries followed by five nested categories,
+ * with labels long enough to wrap to the two-line clamp. Slightly smaller type
+ * with tighter leading fits more of those labels; the rest of this block is
+ * about making depth and position legible at a glance.
+ */
+.theme-doc-sidebar-menu {
+  font-size: 0.9375rem;
+}
+
+.theme-doc-sidebar-menu .menu__link {
+  line-height: 1.35;
+  padding-block: 0.4rem;
+  border-radius: 6px;
+}
+
+/* A rail down the left of every nested list makes the hierarchy readable
+   without counting indents. */
+.theme-doc-sidebar-menu .menu__list .menu__list {
+  margin-left: 0.75rem;
+  padding-left: 0.6rem;
+  border-left: 1px solid var(--politis-rule);
+}
+
+/* Categories read as section headers, and the first one gets a divider so the
+   flat page list above it is visibly a separate group. */
+.theme-doc-sidebar-menu
+  .theme-doc-sidebar-item-category-level-1
+  > .menu__list-item-collapsible
+  > .menu__link--sublist {
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.theme-doc-sidebar-menu
+  .theme-doc-sidebar-item-link-level-1
+  + .theme-doc-sidebar-item-category-level-1 {
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--politis-rule);
+}
+
+/*
+ * Active item = solid primary pill with white text and an inset accent bar.
+ * The accent is an inset shadow rather than a border-left so the label does
+ * not shift sideways as you move between items.
+ *
+ * Scoped to `.theme-doc-sidebar-menu`, which the mobile drawer also carries —
+ * the `.navbar-sidebar` overrides in §4 and below re-tune it for the blue panel.
+ */
+.theme-doc-sidebar-menu .menu__link--active:not(.menu__link--sublist),
+.theme-doc-sidebar-menu .menu__link--active:not(.menu__link--sublist):hover {
+  background-color: var(--ifm-color-primary);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: inset 3px 0 0 var(--ifm-color-primary-darkest);
+}
+
+.theme-doc-sidebar-menu .menu__link--active > span {
+  color: inherit;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-menu .menu__link--active:not(.menu__link--sublist),
+[data-theme='dark'] .theme-doc-sidebar-menu .menu__link--active:not(.menu__link--sublist):hover {
+  background-color: var(--ifm-color-primary-darkest);
+  color: #ffffff;
+  box-shadow: inset 3px 0 0 var(--ifm-color-primary-lightest);
+}
+
+/* The drawer's panel is brand blue, so the neutral rules above would vanish. */
+.navbar-sidebar .theme-doc-sidebar-menu .menu__list .menu__list,
+.navbar-sidebar
+  .theme-doc-sidebar-menu
+  .theme-doc-sidebar-item-link-level-1
+  + .theme-doc-sidebar-item-category-level-1 {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.navbar-sidebar
+  .theme-doc-sidebar-menu
+  .theme-doc-sidebar-item-category-level-1
+  > .menu__list-item-collapsible
+  > .menu__link--sublist {
+  color: #ffffff;
+}
+
+.navbar-sidebar .theme-doc-sidebar-menu .menu__link--active:not(.menu__link--sublist),
+.navbar-sidebar .theme-doc-sidebar-menu .menu__link--active:not(.menu__link--sublist):hover {
+  background-color: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 3px 0 0 var(--ifm-navbar-link-hover-color);
+}
+
+/* =========================================================================
+   7. TABLE OF CONTENTS / PAGINATION
+   ========================================================================= */
+
+/* 0.8rem is small for Cyrillic; the extra 0.05rem buys legibility without
+   forcing more headings to wrap. */
+.table-of-contents {
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.table-of-contents__link {
+  padding-block: 0.05rem;
+}
+
+.table-of-contents__link--active {
+  font-weight: 600;
+}
+
+.pagination-nav__link {
+  border-color: var(--politis-rule);
+  border-radius: 10px;
+  transition: border-color var(--ifm-transition-fast) ease,
+    box-shadow var(--ifm-transition-fast) ease;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: var(--politis-shadow-sm);
+}
+
+.pagination-nav__label {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* =========================================================================
+   8. LANDING PAGE
+   ========================================================================= */
+
+.politis-hero {
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+  background:
+    radial-gradient(
+      60rem 26rem at 50% -6rem,
+      rgba(137, 228, 131, 0.16),
+      transparent 65%
+    ),
+    linear-gradient(135deg, #264F89 0%, #1a375e 100%);
+}
+
+/* A hairline of brand green closes the hero and picks up the CTA colour. */
+.politis-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-politis-green),
+    var(--color-politis-teal),
+    var(--color-politis-aqua)
+  );
+  opacity: 0.9;
+}
+
+.politis-hero__logo {
+  border-radius: 22%;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.7),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+.politis-hero__title {
+  font-size: clamp(2.25rem, 1.5rem + 3.2vw, 3.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.politis-hero__tagline {
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.86);
+  text-wrap: balance;
+}
+
+/*
+ * Infima paints button--success text with --ifm-font-color-base-inverse, i.e.
+ * white — which on the brand mint (#89E483) lands at ~1.6:1. Dark brand ink on
+ * the green is ~8:1 and keeps the palette intact.
+ */
+.button--success {
+  color: var(--ifm-color-primary-darkest);
+}
+
+.button--success:hover,
+.button--success:active,
+.button--success:focus {
+  color: var(--ifm-color-primary-darkest);
+}
+
+[data-theme='dark'] .button--success {
+  color: #10233d;
+}
+
+/*
+ * Ghost/outline button for use on the dark hero. White text + white border,
+ * tinted on hover. Infima's default button--outline keeps the variant's text
+ * colour (black for button--secondary), which disappears on the gradient.
+ */
+.hero-ghost-btn {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+.hero-ghost-btn:hover,
+.hero-ghost-btn:focus {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.politis-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.75rem;
+  border: 1px solid var(--politis-rule);
+  border-radius: 14px;
+  background-color: var(--politis-surface);
+  box-shadow: var(--politis-shadow-sm);
+  color: inherit;
+  text-decoration: none;
+  transition: transform var(--ifm-transition-fast) ease,
+    box-shadow var(--ifm-transition-fast) ease,
+    border-color var(--ifm-transition-fast) ease;
+}
+
+.politis-card:hover {
+  color: inherit;
+  text-decoration: none;
+  transform: translateY(-3px);
+  border-color: var(--ifm-color-primary);
+  box-shadow: var(--politis-shadow-md);
+}
+
+.politis-card:focus-visible {
+  outline: 3px solid var(--ifm-color-primary);
+  outline-offset: 3px;
+}
+
+.politis-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.1rem;
+  border-radius: 12px;
+  background-color: var(--ifm-color-primary-contrast-background);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.politis-card__title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+}
+
+.politis-card__arrow {
+  transition: transform var(--ifm-transition-fast) ease;
+}
+
+.politis-card:hover .politis-card__arrow {
+  transform: translateX(3px);
+}
+
+.politis-card__text {
+  margin: 0;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.6;
+}
+
+/* =========================================================================
+   9. MOTION / PRINT
+   ========================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .politis-card,
+  .politis-card__arrow,
+  .politis-lightbox,
+  .politis-shot,
+  .pagination-nav__link {
+    transition: none;
+    animation: none;
+  }
+
+  .politis-card:hover {
+    transform: none;
+  }
+}
+
+@media print {
+  .politis-shot {
+    box-shadow: none;
+    filter: none;
+  }
+
+  .theme-doc-markdown,
+  .theme-doc-markdown.markdown > * {
+    max-width: none;
+  }
 }
